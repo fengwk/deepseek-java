@@ -109,10 +109,6 @@ public class Main {
                 continue;
             }
 
-            System.out.print(userInput);
-            System.out.flush();
-            System.out.println();
-            System.out.flush();
             System.out.println("> AI");
             System.out.flush();
 

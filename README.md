@@ -96,7 +96,7 @@ public class Main {
         chatRequest.setModel("deepseek-reasoner");
         chatRequest.setMessages(Collections.singletonList(ChatMessage.newUserMessage("你好呀")));
 
-        // 测试普通模式
+        // 普通模式
         System.out.println("chatCompletions-------------------------");
         ChatCompletionsResponse response = chatClient.chatCompletions(chatRequest);
 
@@ -160,9 +160,11 @@ public class ChatClientOptions {
 
 ### Agent
 
-Agent 是对 ChatClient 的封装，通过 AgentEngine 可以简单地实现多伦对话，我在`example/cmd`中提供了一个命令行对话实现：
+Agent 是对 ChatClient 的封装，通过 AgentEngine 可以简单地实现多伦对话，我在`example/cmd`中提供了一个简单的命令行对话实现：
 
 [Main.java](./example/cmd/src/main/java/fun/fengwk/chatjava/example/cmd/Main.java)
+
+![cmdpic](./docs/cmdpic.png)
 
 ### SpringBoot
 
