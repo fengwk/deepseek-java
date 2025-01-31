@@ -202,3 +202,11 @@ public class ChatClientProperties {
     private ChatClientOptions defaultChatClientOptions = new ChatClientOptions();
 }
 ```
+### Function Calling
+
+Using the `@ToolFunction` annotation, a public method can be provided as a tool function for the large model to call. Through `ToolFunctionHandlerRegistry#registerBeanIfNecessary`, all tool methods in an object can be registered to `ChatClientProvider`. For reference, see:
+
+- [ToolChatClientTest.java](./core/src/test/java/fun/fengwk/chatjava/core/client/tool/ToolChatClientTest.java)
+- [ToolFunctionsDemo.java](./core/src/test/java/fun/fengwk/chatjava/core/client/tool/ToolFunctionsDemo.java)
+
+If integrated with SpringBoot, you can use the `@ToolFunction` annotation on any bean to annotate tool methods. These tool methods will automatically be added to the auto-injected `ChatClientProvider`.

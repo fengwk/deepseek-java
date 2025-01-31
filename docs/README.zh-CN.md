@@ -166,7 +166,7 @@ Agent 是对 ChatClient 的封装，通过 AgentEngine 可以简单地实现多�
 
 ![cmdpic](../docs/cmdpic.png)
 
-### SpringBoot
+### Spring Boot
 
 提供了一个 Spring Boot Starter 来快速继承到 Spring Boot 工程中，你只需要依赖下面的配置：
 
@@ -222,3 +222,12 @@ public class ChatClientProperties {
 
 }
 ```
+
+### Function Calling
+
+使用`@ToolFunction`注解可以将一个`public`方法作为工具函数提供给大模型调用，通过`ToolFunctionHandlerRegistry#registerBeanIfNecessary`可以将对象中的工具方法都注册到`ChatClientProvider`中，可参考：
+
+- [ToolChatClientTest.java](../core/src/test/java/fun/fengwk/chatjava/core/client/tool/ToolChatClientTest.java)
+- [ToolFunctionsDemo.java](../core/src/test/java/fun/fengwk/chatjava/core/client/tool/ToolFunctionsDemo.java)
+
+如果是 SpringBoot 集成则运行在任意 bean 中使用`@ToolFunction`来注释工具方法，这些工具方法会自动地添加到自动注入的`ChatClientProvider`中。
