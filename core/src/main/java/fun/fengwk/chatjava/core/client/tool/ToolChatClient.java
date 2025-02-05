@@ -46,8 +46,8 @@ public class ToolChatClient implements ChatClient {
         ChatCompletionsResponse response = delegate.chatCompletions(chatRequest, clientOptions);
         int callTimes = 1;
         while (ChatUtils.isToolCalls(response)) {
-            if (callTimes > clientOptions.getMaxFunctionCallTimes()) {
-                response = handleExceedsCallTimes(response, clientOptions.getMaxFunctionCallTimes());
+            if (callTimes > clientOptions.getMaximumIterations()) {
+                response = handleExceedsCallTimes(response, clientOptions.getMaximumIterations());
                 break;
             }
             ChatMessage message = response.getChatResponse().getChoices().get(0).getMessage();
@@ -92,8 +92,8 @@ public class ToolChatClient implements ChatClient {
             }
 
             // 处理超出调用限制的情况
-            if (callTimes > clientOptions.getMaxFunctionCallTimes())  {
-                resp = handleExceedsCallTimes(resp, clientOptions.getMaxFunctionCallTimes());
+            if (callTimes > clientOptions.getMaximumIterations())  {
+                resp = handleExceedsCallTimes(resp, clientOptions.getMaximumIterations());
                 chatListener.onError(resp.getError());
                 return CompletableFuture.completedStage(resp);
             }

@@ -31,6 +31,6 @@ public class ChatClientOptions {
     /**
      * 为了避免deepseek现有的function calling bug不断循环调用消耗token，需要设置一个循环调用的上限次数
      */
-    private int maxFunctionCallTimes = 3;
+    private int maximumIterations = 5;
 
 }
