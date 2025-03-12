@@ -25,7 +25,7 @@ public class ChatMessage {
     private String content;
 
     /**
-     * 原因内容
+     * 原因内容（deepseek官方api使用该字段来输出推理过程）
      */
     private String reasoning_content;
 
